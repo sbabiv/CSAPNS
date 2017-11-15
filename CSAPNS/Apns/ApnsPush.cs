@@ -47,7 +47,7 @@ namespace CSAPNS.Apns
         public override byte[] ToData()
         {
             var deviceToken = HexToData(Instance.Token);
-            var payload = Encoding.UTF8.GetBytes(Instance.Token);
+            var payload = Encoding.UTF8.GetBytes(Instance.ToString());
             
             var nid = BitConverter.GetBytes(IPAddress.HostToNetworkOrder(_nid));
             var expired = GetExpired(Ttl);

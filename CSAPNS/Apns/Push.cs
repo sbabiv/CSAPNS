@@ -26,7 +26,7 @@ namespace CSAPNS.Apns
 
         public override string ToString()
         {
-            return _payload;
+            return _payload.Trim();
         }
     }
 }
