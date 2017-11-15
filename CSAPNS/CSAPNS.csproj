@@ -43,8 +43,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Apns\ApnsChannel.cs" />
+    <Compile Include="Apns\ApnsChannelState.cs" />
+    <Compile Include="Apns\ApnsErrorResponse.cs" />
+    <Compile Include="Apns\ApnsGate.cs" />
+    <Compile Include="Apns\ApnsPush.cs" />
+    <Compile Include="Apns\ApnsResponseParser.cs" />
+    <Compile Include="Apns\ChannelPushBase.cs" />
+    <Compile Include="Apns\GateSettings.cs" />
+    <Compile Include="Apns\IGate.cs" />
+    <Compile Include="Apns\IResponseParser.cs" />
+    <Compile Include="Apns\MessageResponse.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Apns\Push.cs" />
+    <Compile Include="Apns\PushResponse.cs" />
+    <Compile Include="Apns\ResponseCodes.cs" />
+    <Compile Include="Apns\ResponseWrapper.cs" />
+    <Compile Include="Apns\TransportResponse.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
