@@ -1,7 +1,9 @@
 # csapns
 APNS Binary Format Implementation
 
-Sample code
+To increase performance, use workerPoolSize and Parallel.
+workerPoolSize - number of socket instances.
+For maximum performance, set as many connections as possible. 
 
     class Program
     {
