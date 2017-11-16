@@ -1,5 +1,6 @@
 # csapns
 APNS Binary Format Implementation
+https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/BinaryProviderAPI.html#//apple_ref/doc/uid/TP40008194-CH13-SW1
 
 To increase performance, use workerPoolSize and Parallel.
 workerPoolSize - number of socket instances.
