@@ -1,5 +1,6 @@
 # csapns
 APNS Binary Format Implementation
+https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/BinaryProviderAPI.html#//apple_ref/doc/uid/TP40008194-CH13-SW1
 
 To increase performance, use workerPoolSize and Parallel.
 workerPoolSize - number of socket instances.
@@ -17,8 +18,9 @@ For maximum performance, set as many connections as possible.
 
             gate.Enqueue(new Push("deviceToken", payload, new Dictionary<string, object>()
             {
-                /*custom id*/
+                /*custom params*/
                 {"ID", Guid.NewGuid()},
+                {"Server", "my-test-server-name"},
             }));
 
             Console.ReadLine();
@@ -28,10 +30,12 @@ For maximum performance, set as many connections as possible.
         private static void OnProcessed(PushResponse response)
         {
             var id = (Guid) response.Instance.Attributes["ID"];
+            var server = response.Instance.Attributes["Server"];
 
             var sb = new StringBuilder()
                 .AppendLine("response")
                 .AppendLine("ID: " + id)
+                .AppendLine("Server: " + server)
                 .AppendLine("Token " + response.Instance.Token)
                 .AppendLine("CreateDate: " + response.CrateDate)
                 .AppendLine("Status: " + response.Status)
