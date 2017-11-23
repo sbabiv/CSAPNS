@@ -1,4 +1,4 @@
-﻿namespace CSAPNS.Apns
+﻿namespace CSAPNS.Apns.Channel
 {
     public abstract class ChannelPushBase
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CSAPNS.Apns
+namespace CSAPNS.Apns.Response
 {
     /// <summary>
     /// response data wrapper

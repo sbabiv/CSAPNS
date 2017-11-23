@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Timers;
+
+using CSAPNS.Apns.Channel;
+using CSAPNS.Apns.Response;
+
 using Timer = System.Timers.Timer;
 
 namespace CSAPNS.Apns

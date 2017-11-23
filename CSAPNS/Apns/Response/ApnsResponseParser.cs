@@ -2,7 +2,7 @@
 using System.Net;
 using System.Xml.Linq;
 
-namespace CSAPNS.Apns
+namespace CSAPNS.Apns.Response
 {
     public class ApnsResponseParser : IResponseParser
     {

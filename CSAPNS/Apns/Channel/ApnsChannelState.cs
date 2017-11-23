@@ -5,7 +5,9 @@ using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace CSAPNS.Apns
+using CSAPNS.Apns.Response;
+
+namespace CSAPNS.Apns.Channel
 {
     class ApnsChannelState
     {
@@ -67,7 +69,6 @@ namespace CSAPNS.Apns
                 }
                 catch (Exception e)
                 {
-                    //LogFactory.Instance.Debug(GetType(), e.Message);
                 }   
             }
         }
@@ -90,7 +91,6 @@ namespace CSAPNS.Apns
                 }
                 catch (InvalidOperationException invalidOperationException)
                 {
-                    //LogFactory.Instance.Debug(GetType(), "cleanup exc: " + invalidOperationException);
                 }
             }
         }

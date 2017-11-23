@@ -4,6 +4,8 @@ using System.Net;
 using System.Text;
 using System.Threading;
 
+using CSAPNS.Apns.Channel;
+
 namespace CSAPNS.Apns
 {
     public class ApnsPush : ChannelPushBase

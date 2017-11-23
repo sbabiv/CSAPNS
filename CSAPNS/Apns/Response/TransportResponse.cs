@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace CSAPNS.Apns
+namespace CSAPNS.Apns.Response
 {
     public class TransportResponse
     {

@@ -6,11 +6,13 @@ using System.Security.Authentication;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 
-namespace CSAPNS.Apns
+using CSAPNS.Apns.Response;
+
+namespace CSAPNS.Apns.Channel
 {
     public delegate void ResponseHandler(ResponseWrapper responseWrapper);
 
-    public class ApnsChannel
+    class ApnsChannel
     {
         public readonly Guid UID;
 
@@ -55,13 +57,10 @@ namespace CSAPNS.Apns
                     
                     push.Sent();
                     _channelState.Enqueue(push);
-
-                    //LogFactory.Instance.Debug(GetType(), string.Format("ID:{0} APNS PUSH SENT: {1}", UID, push.SentAt.ToString("HH:mm:ss:fff")));
                 }
             }
             catch(Exception exc)
             {
-                //LogFactory.Instance.Debug(GetType(), string.Format("ID:{0} APNS SEND EXC: {1}", UID, exc));
                 OnResponseHandler?.Invoke(new ResponseWrapper(new MessageResponse(push.Instance), new TransportResponse(HttpStatusCode.BadRequest)));
             }
         }
@@ -76,8 +75,6 @@ namespace CSAPNS.Apns
                         ? "sentat: {0}, invalid token: {1}"
                         : "sentat: {0}, token: {1}", resp.CreationDate.ToString("HH:mm:ss:fff"),
                         resp.MessageDataResp.Source.Token);
-
-                    //LogFactory.Instance.Debug(GetType(), msg);
 
                     OnResponseHandler?.Invoke(resp);
                 }
@@ -96,7 +93,6 @@ namespace CSAPNS.Apns
         {
             if (_client != null && _client.Client.IsConnected() == false)
             {
-                //LogFactory.Instance.Debug(GetType(), string.Format("ID:{0} APNS CHANNEL DISCONNECTED", UID));
                 _connected = false;
             }
 
@@ -104,8 +100,6 @@ namespace CSAPNS.Apns
             {
                 if(_client != null) Disconnect();
                 
-                //LogFactory.Instance.Debug(GetType(), string.Format("ID:{0} APNS CHANNEL CONNECT", UID));
-
                 _client = new TcpClient(_host, _port);
                 _client.SetSocketKeepAliveValues(20 * 60 * 1000, 30 * 1000); 
 
@@ -125,8 +119,6 @@ namespace CSAPNS.Apns
 
             _channel = null;
             _client = null;
-
-            //LogFactory.Instance.Debug(GetType(), string.Format("ID:{0} APNS CHANNEL DISCONNECT", UID));
         }
 
         public void Close()
@@ -136,8 +128,6 @@ namespace CSAPNS.Apns
                 if (_channel != null && _client != null) Disconnect();
 
                 _connected = false;
-
-                //LogFactory.Instance.Debug(GetType(), string.Format("ID:{0} APNS CHANNEL CLOSE", UID));
             }
         }
 
@@ -148,7 +138,6 @@ namespace CSAPNS.Apns
                 var buffer = new byte[6];
                 _channel.BeginRead(buffer, 0, buffer.Length, ar =>
                 {
-                    //LogFactory.Instance.Debug(GetType(), string.Format("ID:{0} APNS READER", UID));
                     lock (_channelState)
                     {
                         try
@@ -159,7 +148,6 @@ namespace CSAPNS.Apns
                         }
                         catch (Exception exc)
                         {
-                            //LogFactory.Instance.Debug(GetType(), string.Format("ID:{0} APNS END READER EXC: {1}", UID, exc.ToString()));
                         }
                         finally
                         {
@@ -170,7 +158,6 @@ namespace CSAPNS.Apns
             }
             catch(Exception exc)
             {
-                //LogFactory.Instance.Debug(GetType(), string.Format("ID:{0} APNS READER EXC: {1}", UID, exc));
                 lock (_channelState)
                 {
                     _connected = false;    

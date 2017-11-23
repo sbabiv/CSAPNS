@@ -4,6 +4,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 using CSAPNS.Apns;
+using CSAPNS.Apns.Response;
 
 namespace CSAPNS
 {

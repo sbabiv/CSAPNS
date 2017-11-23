@@ -1,8 +1,10 @@
-﻿namespace CSAPNS.Apns
+﻿using CSAPNS.Apns.Response;
+
+namespace CSAPNS.Apns
 {
     public delegate void ProcessedHandler(PushResponse response);
 
-    internal interface IGate
+    interface IGate
     {
         /// <summary>
         /// push notification proccessed event

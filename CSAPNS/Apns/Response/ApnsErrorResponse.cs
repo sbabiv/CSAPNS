@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
 
-namespace CSAPNS.Apns
+namespace CSAPNS.Apns.Response
 {
-    public class ApnsErrorResponse
+    class ApnsErrorResponse
     {
         public int Status { get; private set; }
         public int NID { get; private set; }

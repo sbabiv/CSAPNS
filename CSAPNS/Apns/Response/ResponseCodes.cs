@@ -1,4 +1,4 @@
-﻿namespace CSAPNS.Apns
+﻿namespace CSAPNS.Apns.Response
 {
     /// <summary>
     /// push transport code
