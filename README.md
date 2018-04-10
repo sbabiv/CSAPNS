@@ -6,6 +6,7 @@ To increase performance, use workerPoolSize and Parallel.
 workerPoolSize - number of socket instances.
 For maximum performance, set as many connections as possible. 
 
+```javascript
     class Program
     {
         static void Main(string[] args)
@@ -44,3 +45,4 @@ For maximum performance, set as many connections as possible.
             Console.WriteLine(sb.ToString());
         }
     }
+```
